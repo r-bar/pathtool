@@ -13,20 +13,37 @@ not know what gui apps, for example, rely on the system versions of python.
 
 ## Sort order
 
-1. Paths in the home folder
-  * order is maintained relative to each other
+1. Paths in the `$HOME` folder
 2. `/local` paths
 3. `/usr` paths
 4. Root `/` paths
-
 
 Within each of these we want `*/bin/` to be searched before `*/sbin/`.
 
 
 ## Usage
+
 * `-a`: append a path to its relative section
 * `-p`: prepend a path to its relative section
-* `-A`: Append a path to the end
-* `-d`: deduplicate paths (default)
+* `-A`: Append a path to the end. (Not sorted)
+* `-P`: Prepend a path to the beginning. (Not sorted)
 * `-D`: do not deduplicate paths
-* `-s`: sort paths according to the [sort order](#sort-order)
+* `-S`: do not sort paths
+
+
+### Examples
+
+Sort the existing `$PATH` variable
+```shell
+export PATH="$(pathtool)"
+```
+
+Append `/foo/bin` to the end `$PATH` variable
+```shell
+export PATH="$(pathtool -A /foo/bin)"
+```
+
+Add `/bar/bin` to the sorted paths
+```shell
+export PATH="$(pathtool -a /bar/bin)"
+```
