@@ -1,5 +1,5 @@
 [package]
-name = "sort_path"
+name = "pathtool"
 version = "0.1.0"
 authors = ["Ryan Barth <ryan@barth.tech>"]
 edition = "2018"
